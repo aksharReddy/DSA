@@ -1,0 +1,12 @@
+ to find a nunber at rth row and cth column in pascal triangle use n-1Cr-1 and use a for loop to calciulate the value instead of factorial 
+to print a row you can use for loop from c=1 c<n and using the above function whuich takes a long time so use
+ vector<int>list;
+        int ans = 1;
+        list.push_back(ans);
+        for(int i=1;i<row;i++){
+            ans = ans*(row-i);
+            ans = ans/i;
+            list.push_back(ans);
+        }
+        return list;
+same can be used to print all the rows when a rownumber is given
