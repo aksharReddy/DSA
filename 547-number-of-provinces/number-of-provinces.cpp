@@ -25,6 +25,16 @@ public:
         }
         
     }
+
+    void dfs(int start,vector<vector<int>>&adj,vector<int>&vis){
+        vis[start] = 1;
+
+        for(auto it:adj[start]){
+            if(!vis[it]){
+                dfs(it,adj,vis);
+            }
+        }
+    }
     int findCircleNum(vector<vector<int>>& isConnected) {
         int n = isConnected.size();
          vector<vector<int>>adjList(n,vector<int>(n));
@@ -39,7 +49,7 @@ public:
         int cnt=0;
         for(int i=0;i<n;i++){
             if(!vis[i]){
-            bfs(i,adjList,vis);
+            dfs(i,adjList,vis);
             cnt++;
             } 
         }
