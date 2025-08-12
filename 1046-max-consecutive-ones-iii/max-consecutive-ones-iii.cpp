@@ -9,7 +9,7 @@ public:
 
         for(int r=0;r<n;r++){
             if(a[r]==0) o++;
-            while(o>k){
+            if(o>k){
                 if(a[l]==0)o--;
                 l++;
             }
