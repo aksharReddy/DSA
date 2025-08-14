@@ -2,7 +2,8 @@ class Solution {
 public:
     string minInteger(string s, int K) {
         int n = s.size();
-    for (int i = 0; i < n && K > 0; i++) {
+    for (int i = 0; i < n ; i++) {
+        if(K<=0) break;
         // Look ahead up to K steps to find max digit
         int maxPos = i;
         for (int j = i + 1; j < n && j - i <= K; j++) {
