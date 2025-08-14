@@ -1,17 +1,29 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        
-        vector<int>lastSeen = {-1,-1,-1};
-        int cnt = 0;
+        int n = s.size();
+        int l = 0, r = 0;
+        unordered_map<char,int> mpp;
+        int count = 0;
 
-        for(int i=0;i<s.size();i++){
-            lastSeen[s[i]-'a'] = i;
-            if(lastSeen[0]!=-1 &&lastSeen[1]!=-1 &&lastSeen[2]!=-1){
-                cnt = cnt+(1+min(lastSeen[0],min(lastSeen[1],lastSeen[2])));
+        while (r < n) {
+            // Expand the window by including s[r]
+            mpp[s[r]]++;
+
+            // When we have all 3 chars
+            while (mpp.size() == 3) {
+                // All substrings from current (l, r) to (l, n-1) are valid
+                count += (n - r);
+
+                // Shrink from left
+                mpp[s[l]]--;
+                if (mpp[s[l]] == 0) {
+                    mpp.erase(s[l]);
+                }
+                l++;
             }
+            r++;
         }
-        return cnt;
-
+        return count;
     }
 };
