@@ -6,7 +6,7 @@ public:
         map<int,int>mpp;
 
         for(int r=0;r<a.size();r++){
-            while(mpp.size()>2){
+            if(mpp.size()>2){
                 mpp[a[l]]--;
                 if(mpp[a[l]] ==0) mpp.erase(a[l]);
                 l++;
