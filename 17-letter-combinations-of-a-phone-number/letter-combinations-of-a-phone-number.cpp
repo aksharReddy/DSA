@@ -29,9 +29,29 @@ public:
     "tuv",  // 8
     "wxyz"  // 9
 };
-    string current="";
-    vector<string>ans;
-    solve(digits,0,map,current,ans);
-    return ans;
+    // string current="";
+    // vector<string>ans;
+    // solve(digits,0,map,current,ans);
+    // return ans;
+     vector<string> ans;
+     if(digits.size()==0) return {};
+        ans.push_back("");  // start with empty string
+
+        // iterate over each digit
+        for (char digit : digits) {
+            string letters = map[digit - '0'];
+            vector<string> temp;
+
+            // append all letters of current digit to existing combinations
+            for (string &comb : ans) {
+                for (char c : letters) {
+                    temp.push_back(comb + c);
+                }
+            }
+
+            ans = temp;  // update ans
+        }
+
+        return ans;
     }
 };
