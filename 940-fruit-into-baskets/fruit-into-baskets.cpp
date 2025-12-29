@@ -1,25 +1,24 @@
 class Solution {
 public:
-    int totalFruit(vector<int>& a) {
-        int l=0;
-        int maxlen = 0;
+    int totalFruit(vector<int>& fruits) {
         map<int,int>mpp;
+        int l = 0;
+         int r=0;
+         int maxlen= 0;
 
-        for(int r=0;r<a.size();r++){
-            if(mpp.size()>2){
-                mpp[a[l]]--;
-                if(mpp[a[l]] ==0) mpp.erase(a[l]);
+         while(r<fruits.size()){
+            mpp[fruits[r]]++;
+
+            while(mpp.size()>2){
+                mpp[fruits[l]]--;
+                if(mpp[fruits[l]] == 0){
+                    mpp.erase(fruits[l]);
+                }
                 l++;
             }
-            mpp[a[r]]+=1;
-            if(mpp.size()<=2){
-                maxlen = max(maxlen,r-l+1);
-            }
-            
-
-
-        }
-        return maxlen;
-
+            maxlen = max(maxlen,r-l+1);
+            r++;
+         }
+         return maxlen;
     }
 };
