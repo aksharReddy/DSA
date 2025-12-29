@@ -1,29 +1,23 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        int n = s.size();
-        int l = 0, r = 0;
-        unordered_map<char,int> mpp;
-        int count = 0;
-
-        while (r < n) {
-            // Expand the window by including s[r]
+        int l = 0;
+        int r = 0;
+        int total = 0;
+        int n = s.length();
+        map<char,int>mpp;
+        while(r<n){
             mpp[s[r]]++;
-
-            // When we have all 3 chars
-            while (mpp.size() == 3) {
-                // All substrings from current (l, r) to (l, n-1) are valid
-                count += (n - r);
-
-                // Shrink from left
-                mpp[s[l]]--;
-                if (mpp[s[l]] == 0) {
+            while(mpp.size() == 3){
+                total+=n-r;
+                mpp[s[l]] --;
+                if(mpp[s[l]] == 0){
                     mpp.erase(s[l]);
                 }
                 l++;
             }
             r++;
         }
-        return count;
+        return total;
     }
 };
