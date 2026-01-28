@@ -1,18 +1,20 @@
 class Solution {
 public:
     string removeOuterParentheses(string s) {
-        string res;
-        int opened = 0;  // current depth
+        int opened = 0;
+        string ans = "";
 
-        for (char c : s) {
-            if (c == '(') {
-                if (opened > 0) res += c; // keep if not the outermost
+        for(int i=0;i<s.length();i++){
+            char ch = s[i];
+            if(ch == '('){
+                if(opened>0)ans+=ch;
                 opened++;
-            } else { // c == ')'
-                opened--;
-                if (opened > 0) res += c; // keep if not the outermost
+            }
+            else{
+                opened --;
+                if(opened>0)ans+=ch;
             }
         }
-        return res;
+        return ans;
     }
 };
