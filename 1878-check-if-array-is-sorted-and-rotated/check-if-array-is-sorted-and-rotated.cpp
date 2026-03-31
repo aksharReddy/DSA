@@ -1,15 +1,12 @@
 class Solution {
 public:
-    bool check(vector<int>& nums) {
-        int ind=0;
-        int n = nums.size();
-        for(int i=0;i<n-1;i++){
-            if(nums[i]>nums[i+1])ind++;
+    bool check(vector<int>& arr) {
+        int cnt=0;
+        for(int i=0;i<arr.size()-1;i++){
+            if(arr[i]>arr[i+1])cnt++;
         }
-
-        if(nums[n-1]>nums[0])ind++;
-
-        if(ind<=1) return true;
-        else return false;
+        if(arr[arr.size()-1]>arr[0])cnt++;
+        if(cnt>1)return false;
+        return true;
     }
 };
